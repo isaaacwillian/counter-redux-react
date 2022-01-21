@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Contador from "./components/Contador";
+import Cabecalho from "./components/Cabecalho";
+import { createStore } from "redux";
+import contadorReducer from "./reducers/contadorReducer";
+import { Provider } from "react-redux";
 
 function App() {
+  const store = createStore(contadorReducer);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Provider store={store}>
+        <Contador></Contador>
+        <Cabecalho></Cabecalho>
+      </Provider>
     </div>
   );
 }
